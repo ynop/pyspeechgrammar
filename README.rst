@@ -1,5 +1,6 @@
+*****
 pyspeechgrammar
-===============
+*****
 
 PySpeechGrammar can be used to parse and convert speech grammar formats.
 
@@ -9,23 +10,50 @@ Currently the following formats are supported:
 * SRGS XML (serializing)
 
 Usage
------
+########
+
+**Import:**
+
+.. code-block:: python
+
+    import pyspeechgrammar
+
+**Convert JSGF to SRGS XML**
+
+.. code-block:: python
+
+    import pyspeechgrammar
+    
+    jsgf_value = '#JSGF V1.0; ...'
+    srgs_xml_value = pyspeechgrammar.convert_jsgf_string_to_srgs_xml_string(jsgf_value)
+
+.. code-block:: python
+
+    import pyspeechgrammar
+    
+    jsgf_file_path = 'file.jsgf'
+    srgs_xml_target_path = 'srgs.xml'
+    
+    srgs_xml_value = pyspeechgrammar.convert_jsgf_to_srgs_xml(jsgf_file, srgs_xml_target_path)
+
+
 
 Installation
-------------
+########
 
 Requirements
-^^^^^^^^^^^^
+########
 
 * modgrammar
 
 Compatibility
--------------
+########
 
 * Python 3
 
 Licence
--------
+########
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Matthias
@@ -49,6 +77,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 Authors
--------
+########
 
 `pyspeechgrammar` was written by `Buechi Matthias <m.buechi@outlook.com>`_.
