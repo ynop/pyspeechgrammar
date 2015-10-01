@@ -41,6 +41,10 @@ Usage
 Installation
 ########
 
+.. code-block:: bash
+
+    python setup.py install
+
 Requirements
 ########
 
