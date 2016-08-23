@@ -139,7 +139,7 @@ class Token(modgrammar.Grammar):
     grammar = (modgrammar.ONE_OR_MORE(modgrammar.EXCEPT(modgrammar.ANY(""), MetaCharacter)))
 
     def grammar_elem_init(self, session_data):
-        self.model = model.Token(value=self[0].string)
+        self.model = model.Token(value=self[0].string.strip())
 
 
 class QuotedToken(modgrammar.Grammar):
@@ -153,7 +153,7 @@ class QuotedToken(modgrammar.Grammar):
         else:
             value = self[2].string
 
-        self.model = model.Token(value=value)
+        self.model = model.Token(value=value.strip())
 
 
 class RuleReference(modgrammar.Grammar):
@@ -203,7 +203,6 @@ class SequenceRuleExpansion(modgrammar.Grammar):
 
     def grammar_elem_init(self, session_data):
         self.model = self[0].model
-
 
         if self[1] is not None:
             min_repeat = 1
@@ -363,3 +362,6 @@ class Grammar(modgrammar.Grammar):
         for i in range(len(self[1].elements)):
             rule = self[1][i].model
             self.model.add_rule(rule)
+
+            if rule.scope == model.Rule.SCOPE_PUBLIC and self.model.root_rule is None:
+                self.model.root_rule = rule

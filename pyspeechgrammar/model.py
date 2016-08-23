@@ -25,6 +25,11 @@ class Grammar:
 
         return False
 
+    def get_rule_with_name(self, rule_name):
+        for rule in self.rules:
+            if rule.name == rule_name:
+                return rule
+
 
 class Element:
     INFINITY_REPEAT = -1
@@ -45,7 +50,8 @@ class Element:
             raise ValueError("Maximal repeat value ({}) has to be greater than or equal 0.".format(max_repeat))
 
         if min_repeat > max_repeat and max_repeat != Element.INFINITY_REPEAT:
-            raise ValueError("Minimal repeat value ({}) has to be greater than or equal to the maximal repeat value ({})".format(min_repeat, max_repeat))
+            raise ValueError(
+                "Minimal repeat value ({}) has to be greater than or equal to the maximal repeat value ({})".format(min_repeat, max_repeat))
 
         self.min_repeat = min_repeat
         self.max_repeat = max_repeat
@@ -72,7 +78,6 @@ class ElementContainer:
 
 
 class Rule(Element):
-
     SCOPE_PRIVATE = 'private'
     SCOPE_PUBLIC = 'public'
 
