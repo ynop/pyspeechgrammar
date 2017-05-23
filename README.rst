@@ -1,9 +1,4 @@
 *****
-Integrated in https://github.com/ynop/spych. No changes will be made to this repository anymore.
-*****
-
-
-*****
 pyspeechgrammar
 *****
 
